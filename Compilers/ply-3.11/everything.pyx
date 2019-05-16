@@ -1,24 +1,27 @@
-
-int algo = 9
-float algo = 8.0
-float algo = -8.0
-True algo
-False algo
-double algo = -123456789
-long algo = 97654
-short algo= -975
-
-for x in fruit:
-  if(a<b):
-    if(x>b):
-      if(u>p):
-        print("Do something")
-  elif (t=o):
-    break
+if a<b:
+  a=0
+  if a<b:
+  a=0
+  if a <b:
+  a=0
+  ~
   else:
-    print("Something")
-
-  #qwertyui
-  
-  input("Give me value:")
-  print("Print something")
+  a=0
+for i in range :
+  if a<b:
+    a=0
+    if a==0 or a<b:
+      a=0
+    else:
+    a=0
+    a=0
+  for i in range :
+      a=0
+cdef int a = 0
+cdef float a =0
+cdef char a = 0
+cdef double a = 0
+cdef short a = 0
+print("Andres")
+c = input("calc")
+#comment

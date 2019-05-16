@@ -1,11 +1,5 @@
-float algo
-int algo
-float algo
-algo = True
-algo = False
-char = algo
-double algo
-long algo
-short algo
-def long algo
-cdef short algo
+cdef int a = 0
+cdef float a =0
+cdef char a = 0
+cdef double a = 0
+cdef short a = 0

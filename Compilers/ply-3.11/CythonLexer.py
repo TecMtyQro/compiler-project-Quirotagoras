@@ -1,5 +1,7 @@
 #Andres Quiroz
 #Cython Lexer
+#ignorar comentarios
+
 
 import ply.lex as lex
 
@@ -22,9 +24,12 @@ reserved = {
     'char': 'CHAR',
     'float':'FLOAT',
     'def' : 'DEF',
+    'list' : 'LIST',
     'in' : 'IN',
+    'not in' : 'NOT_IN',
     'is' : 'IS',
-    'not':'NOT',
+    'is not': 'IS_NOT',
+    'not' : 'NOT',
     'range' : 'RANGE',
     'none' : 'NONE',
     'print':'PRINT',
@@ -47,6 +52,7 @@ tokens = [
 'PLUS',
 'MINUS_ASSIGN',
 'MINUS',
+
 'TIMES_ASSIGN',
 'TIMES',
 'DIVIDE_ASSIGN',
@@ -62,9 +68,6 @@ tokens = [
 'LCORCHETE',
 'RCORCHETE',
 'COMMENT_LINE',
-'COMMENT',
-'NEGATIVE_NUMBER',
-'NEGATIVE_FLOAT_NUMBER',
 'FLOAT_NUMBER',
 'NUMBER',
 'ID',
@@ -74,6 +77,8 @@ tokens = [
 'DOUBLEAPOSTROPHE',
 'COMA',
 'DOT',
+'NEWLINE',
+'INDENT',
 ]+list(reserved.values())
 
 # Regular expression for simple tokens that are not reserved words
@@ -101,19 +106,22 @@ t_LBRACKET= r'\['
 t_RBRACKET= r'\]'
 t_LCORCHETE= r'\{'
 t_RCORCHETE= r'\}'
-t_COMMENT = r'\#.*'
+
 t_THEN=r'\:'
 t_COMMENT_LINE= r'\"\"\".*\n+\"\"\"'
 t_DOUBLEAPOSTROPHE=r'\"'
 t_APOSTROPHE=r'\''
 t_COMA=r'\,'
 t_DOT=r'\.'
+t_INDENT=r'\t'
+
+
 
 
 
 
 # SPACES AND TAB
-t_ignore  = r' \t'
+t_ignore  = r' ' or r'\#.*'
 
 # REGULAR EXPRESSIONS complex tokens
 def t_FLOAT_NUMBER(t):
@@ -121,20 +129,17 @@ def t_FLOAT_NUMBER(t):
     t.value = float(t.value)
     return t
 
-def t_NEGATIVE_FLOAT_NUMBER(t):
+'''def t_NEGATIVE_FLOAT_NUMBER(t):
     r'\-\d+\.\d+'
     t.value = float(t.value)
-    return t
+    return t'''
 
 def t_NUMBER(t):
     r'\d+'
     t.value = int(t.value)
     return t
 
-def t_NEGATIVE_NUMBER(t):
-    r'\-\d+'
-    t.value = int(t.value)
-    return t
+
 
 def t_STRING(t):
     r'\'\w.+\'|\"\w.+\"'
@@ -147,11 +152,11 @@ def t_ID(t):
      return t
 
 
-
 # Define a rule so we can track line numbers
-def t_newline(t):
+def t_NEWLINE(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
+
 
 
 # PANIC ERROR
@@ -168,7 +173,7 @@ lexer = lex.lex()
 
 
 # Tests
-
+'''
 
 def test0():
     file= open ("comment_line.pyx","r")
@@ -277,11 +282,14 @@ while(active):
 
         prepdata=choice(intInput)
         data=prepdata.read()
+        '''
+data='''3+5/7'''
         # Give the lexer some input(data)
-        lexer.input(data)
-
-        while True:
-            tok = lexer.token()
-            if not tok:
-                break      # No more input
-            print(tok)
+lexer.input(data)
+'''
+while True:
+    tok = lexer.token()
+    if not tok:
+        break      # No more input
+    print(tok)
+    '''

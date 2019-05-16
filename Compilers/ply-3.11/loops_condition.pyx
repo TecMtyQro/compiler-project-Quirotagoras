@@ -1,9 +1,10 @@
-for x in fruit:
-  if(a<b):
-    if(x>b):
-      if(u>p):
-        print("Do something")
-  elif (t=o):
-    break
-  else:
-    print("Something")
+for i in range :
+  if a<b:
+    a=0
+    if a==0 or a<b:
+      a=0
+    else:
+    a=0
+    a=0
+  for i in range :
+    a=0

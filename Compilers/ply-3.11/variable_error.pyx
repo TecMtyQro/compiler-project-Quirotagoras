@@ -1,3 +1,2 @@
-a 20 = float
-True = b
-c = character int 
+cef int a =0
+cdef a = 0

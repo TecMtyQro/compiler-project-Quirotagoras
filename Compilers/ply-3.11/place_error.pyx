@@ -1,2 +1,3 @@
-int cdef a = "Andres"
-a = array["1"]
+i for range :
+  break
+  cdef a int =0

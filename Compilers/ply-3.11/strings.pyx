@@ -1,3 +1,2 @@
-"Andres"
-"Andres Quiroz Duarte"
-"Hola"
+print ("Andres"+a+"?")
+print ("Andres"+a+"?")
